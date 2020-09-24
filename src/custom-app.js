@@ -1,4 +1,5 @@
 import { html, css, LitElement } from 'lit-element'
+import { repeat } from 'lit-html/directives/repeat'
 
 class CustomApp extends LitElement {
 
@@ -40,7 +41,7 @@ class CustomApp extends LitElement {
 
   _removeNumber(event) {
     if (this.numbers.length) {
-      this.numbers = this.numbers.slice(0, this.numbers.length - 1)
+      this.numbers = this.numbers.slice(1, this.numbers.length)
     }
   }
 
@@ -50,10 +51,12 @@ class CustomApp extends LitElement {
         <h1>Hello from LitElement</h1>
         <p>Writing out pure html within lit-html html tag template</p>
         <button @click="${this._addNumber}">Increment List</button>
-        <button @click="${this._removeNumber}">Decrement List</button>
+        <button @click="${this._removeNumber}">Pop First List Item</button>
         <h2>Creating a list with JavaScript</h2>
         <ul>
-          ${this.numbers.map(number => html`<li>${number}</li>`)}
+          ${repeat(this.numbers, number => number, (number) => html`
+            <li>${number}</li>
+          `)}
         </ul>
       </div>
     `
