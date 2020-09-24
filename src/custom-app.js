@@ -29,8 +29,13 @@ class CustomApp extends LitElement {
   }
 
   _addNumber(event) {
-    if (this.numbers.length !== 0) this.numbers = [...this.numbers, this.numbers[this.numbers.length - 1] + 1]
-    else this.numbers = [1]
+    if (this.numbers.length)
+      this.numbers = [
+        ...this.numbers,
+        this.numbers[this.numbers.length - 1] + 1,
+      ]
+    else
+      this.numbers = [1]
   }
 
   _removeNumber(event) {
