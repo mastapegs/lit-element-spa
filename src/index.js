@@ -1,6 +1,6 @@
 import { html, render } from 'lit-html'
-import './components/my-element'
+import './custom-app'
 
 render(html`
-  <my-element></my-element>
+  <custom-app></custom-app>
 `, document.body)
